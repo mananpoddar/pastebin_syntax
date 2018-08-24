@@ -1,0 +1,41 @@
+{% extends "pastebin/base.html" %}
+{% block main_content %}
+
+<nav class="navbar navbar-default" >
+                <div class="container">
+                <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>                        
+                              </button>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                 <li>  <a href="#!" class="active">welcome {{username}}</a>    </li>
+                 <li>  <a href="/pastebin/{{var3}}/edit_logged_in/">edit here</a></li>
+                 <li>  <a href="{% url "pastebin:user_logout" %}" class="active">logout</a>    </li>
+
+
+                 
+                 </ul> 
+                </div>
+        </nav>
+
+
+<div class="container">
+    <div style="text-align: center">
+       <h1 style="margin-top: 4em;"> SUCCESSFULLY SUBMITTED!<h1>
+            
+            <a href="/pastebin/logged_in/{{var3}}" style="font-size: 2em   ; text-decoration: none">http://localhost:8000/pastebin/logged_in/{{var3}}</a>
+            {{var.content}}<br><br><br>
+            {{var1}}  <br>{{latest_model1}}<br><br>{{var.owner}}
+
+
+<br>
+        </div>
+
+</div>
+
+
+{% endblock %}

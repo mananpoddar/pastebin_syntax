@@ -1,0 +1,50 @@
+{% extends "pastebin/base.html" %}
+{% block main_content %}
+    <body>
+
+
+        <nav class="navbar navbar-default" >
+                <div class="container">
+                <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>                        
+                              </button>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                 <li>  <a href="#!" class="active">welcome {{username}}</a>    </li>
+                    <li>  <a href="{% url "pastebin:user_logout" %}" class="active">logout</a>    </li>
+
+ 
+                
+                 </ul> 
+                </div>
+        </nav>
+        <div class="container-fluid">
+
+
+<div class="row">
+  <div class="col-sm-8">
+            <form class="form-horizontal" action="/pastebin/main_loggedin_page/" method="POST">
+                {% csrf_token %}
+       {{ form.non_field_errors }}
+            your text:<br>{{form.content }}<br><br>
+            <url:>
+             <em>&nbsp;</em><br><br>
+      
+                <input class="btn btn-primary" type="submit" value="Submit it">   
+            </form>   
+</div>
+     <div class="col-sm-4"><div class="container-fluid">all the tough task of managing your shared codes is on us !</div>
+              <br>
+                    {% for items in mypaste %} 
+                   <a href="/pastebin/logged_in/{{items.url}}"> {{items.content}}</a> <br>
+                    
+                    {% endfor %}</div>
+</div>
+
+
+{% endblock %}
+   

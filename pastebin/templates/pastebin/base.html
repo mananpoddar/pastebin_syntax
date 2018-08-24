@@ -1,0 +1,136 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+<title>MANAN </title>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+<link rel="stylesheet" type="text/css" href="content.css">
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Amethysta' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Bitter' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Barlow' rel='stylesheet'>
+
+
+
+<style>
+    .parallax1 {
+    /* The image used */
+   
+    background-image: url("{% static "blog/nitk.png" %}");
+
+    /* Set a specific height */
+    height: 30em; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:150em ;
+    width: 100%;
+}
+
+.signup{
+    margin-left: 25em;
+    
+   
+}
+.image{
+    background-image: url("{% static "pastebin/nitk.png" %}");
+    background-repeat:repeat-y;
+    width:100%;
+    margin:0; 
+    padding:0; 
+    height:100%;
+    
+}
+.font_cool {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Raleway', sans-serif;
+                font-weight: 100;
+                height: 15em;
+                margin: 0;
+                text-align: center;
+                margin-top:2em;
+                font-size: 2.5em;
+            }
+
+
+</style>
+</head>
+<script>
+    
+    function callabout(){
+        document.getElementById("demo").innerHTML="This Web application is developed for a project of web enthusiast club by me."+
+        "you can visit me on my personal website on mananpoddar.github.io"
+    }
+
+      function callcontact(){
+                          document.getElementById("demo").innerHTML="<ul><li>&#35; 20,Block 7,NITK,  SURATHKAL</li><li>INDIA</li><li>+91&nbsp;9113536695</li><li><a href=mailto:mananpoddarm@gmail.com style=text-decoration:none>&#9993;"+
+                         " mananpoddarm@gmail.com</a></li></ul>"
+                  }
+                </script>
+  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
+  <script src="{% static 'pastebin/js/tinymce/tinymce.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'pastebin/js/tinymce/custom.js' %}" ></script>
+                  
+
+<body>
+
+        <div class="font_cool">
+                <br><div class="hello">We nitikians are proud to have our personal hub for sharing codes</div><br><br>
+                
+          
+    
+       
+            {% block main_content %}
+    {% endblock %}
+<!--
+          <nav class="navbar navbar-default" >
+                <div class="container">
+                <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>                        
+                              </button>
+                    <a href="#!" onclick="callabout()"class="navbar-brand">About</a>  
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+           
+                 <li>  <a href="#!" onclick="callcontact()">Contact Me</a></li>
+                 </ul> 
+                </div>
+        </nav>
+        <div class="container">
+                <div class="main_content" style="font-family:Amethysta">
+                   <div   id="demo">
+                      <div  >This website provides us to share our code easily </div>
+                       </div>
+                    </div>
+                  </div>
+              </div>
+   
+
+
+</div>
+-->
+</body>
+</html>
