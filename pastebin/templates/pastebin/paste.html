@@ -1,7 +1,7 @@
 {% extends "pastebin/base.html" %}
 {% block main_content %}
-    <body>
 
+            <body>
 
  <!--navbar-->
          
@@ -28,17 +28,25 @@
 <div class="container">
 <div class="row">
   <div class="col-sm-8">
+
+        <pre>
+                <code class="language-markup">
+                    code line text here #include<stdio.h>
+                </code>
+            </pre>
+
             <form class="form-horizontal" action="/pastebin/main_page/" method="POST">
           
                 {% csrf_token %}
        {{ form.non_field_errors }}
-        <div class="container" style="font-family: cursive">
-            your text:<br>{{form.content }}<br><br>
+        <div class="container"  style="font-family: cursive">
+            your text:  <pre><code class="language-xxxx">  <br>{{form.content }}</code></pre><br><br>
            
       
                 <input class="btn btn-primary" type="submit" value="upload">   
             </form>   
   </div>
+  <code>#includljhe stdio.h</code>
      <div class="col-sm-4">
      </div>
   </div>
