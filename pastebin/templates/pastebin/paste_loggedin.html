@@ -1,7 +1,12 @@
 {% extends "pastebin/base.html" %}
 {% block main_content %}
+{% load staticfiles %}
     <body>
-
+            <link rel="stylesheet" type="text/css" href="{% static "/pastebin/prism.css" %}">
+            <script src="{% static "pastebin/prism.js" %}"></script>
+            {% load static %}
+            <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+            <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 
         <nav class="navbar navbar-default" >
                 <div class="container">
@@ -62,7 +67,7 @@
             <form class="form-horizontal" action="/pastebin/main_loggedin_page/" method="POST">
                 {% csrf_token %}
        {{ form.non_field_errors }}
-            your text:<br>{{form.content }}<br><br>
+            your text:<br>{{form.media}}{{form.content }}<br><br>
             <url:>
              <em>&nbsp;</em><br><br>
       <div class="container">expiration date</div>
@@ -79,7 +84,7 @@
      <div class="col-sm-4"><div class="container-fluid">all the tough task of managing your shared codes is on us !</div>
               <br>
                     {% for items in mypaste %} 
-                   <a href="/pastebin/logged_in/{{items.url}}"> {{items.content}}</a> <br>
+                   <a href="/pastebin/logged_in/{{items.url}}"> pastebin/logged_in/{{items.url}}</a> <br>
                     
                     {% endfor %}</div>
 </div>

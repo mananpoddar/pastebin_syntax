@@ -61,11 +61,9 @@ $('.format-date').each(function () {
 
 
 <div class="container">
-<div class="row">
-  <div class="col-sm-8"><br><br><br>
+
 <div style="background-color: black">
-<span>write your code with us</span>
-</div>
+<span>share your code with us</span>
 
 <pre><code class="language-javascript">
         var myObject = {
@@ -75,18 +73,20 @@ $('.format-date').each(function () {
         }; 
         </code></pre>
 
-
+</div></div>
+<div class="row">
+    <div class="col-sm-8">
             <form class="form-horizontal" action="/pastebin/main_page/" method="POST">
           
                 {% csrf_token %}
        {{ form.non_field_errors }}
 
 
+<br>
 
 
-
-        <div class="container"  style="font-family: cursive">
-            your text:  <pre class="language-javascript"><br>{{form.media}}{{form.content }}</pre><br><br>
+        <div class="container" style="margin-right: 3em " >
+            your code/text: </div><br> {{form.media}}{{form.content }}<br><br>
            
       
 <div> expiration date</div>
@@ -99,15 +99,18 @@ $('.format-date').each(function () {
 
                 <input class="btn btn-primary" type="submit" value="upload">   
             </form>   
-  </div>
-  <script src="{% static "static/pastebin/prism.js" %}"></script>
-
-     <div class="col-sm-4">
-     </div>
-  </div>
+ 
+    </div>
+    
+    <div class="col-sm-4"><div class="container-fluid">see what is trending here within coders of nitk by viewing recent 10 shares !</div>
+    <br>
+          {% for items in mypaste %} 
+         <a href="/pastebin/{{items.url}}"> pastebin/{{items.url}}</a> <br>
+          
+          {% endfor %}</div>
 </div>
-
-
+ 
+    </div>
 
 
    {% endblock %}

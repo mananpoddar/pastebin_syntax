@@ -20,6 +20,9 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 def main_page(request):
     form=input()
+    mypaste=paste.objects.all()
+    mypaste = sorted(mypaste,key=lambda x:x.url,reverse=True)
+
     if request.method=="POST":
         form=input(request.POST)
         mydate=request.POST.get("date",)
@@ -29,7 +32,7 @@ def main_page(request):
         mydate=date(year,month,day)
         diff=mydate-date.today()
         if diff.days<0:
-            return HttpResponse("invalid date")
+            return render(request,"pastebin/return_invalid_date.html")
         else:
         #date_i=date.today()-mydate
          if form.is_valid():
@@ -39,7 +42,7 @@ def main_page(request):
             
          else:
             print("error")    
-    return render(request,"pastebin/paste.html",{"form":form }) 
+    return render(request,"pastebin/paste.html",{"form":form ,"mypaste":mypaste[:10]}) 
 @login_required
 def main_loggedin_page(request):
    form=input_logged_in()
@@ -48,6 +51,8 @@ def main_loggedin_page(request):
    var=form.save(commit=False)
    var.owner=usernam
    mypaste=paste_logged_in.objects.filter(owner=usernam)
+   mypaste = sorted(mypaste,key=lambda x:x.url,reverse=True)
+
    if request.method=="POST":
         form=input_logged_in(request.POST)
         mydate=request.POST.get("date",)
@@ -59,7 +64,7 @@ def main_loggedin_page(request):
         diff=mydate-date.today()
         var.owner=usernam
         if diff.days<0:
-            return HttpResponse("invalid date")
+            return render(request,"pastebin/return_invalid_date_log.html")
         else:
          if form.is_valid():
             latest_model=form.save()
@@ -77,7 +82,7 @@ def content_fetch(request,url_no):
      diff=mydate-date.today()
      
      if diff.days<0:
-         return HttpResponse("this link has been expired")
+            return render(request,"pastebin/return_link_expired.html")
      else:
          return render(request,"pastebin/fetching_content.html",{"content_object":content_object,"var3":url_no })
 
@@ -87,7 +92,7 @@ def content_fetch_logged_in(request,url_no):
     diff=mydate-date.today()
     usernam=request.user.username
     if diff.days<0:
-        return HttpResponse("the link has expired")
+            return render(request,"pastebin/return_link_expired.html")
     else:
         return render(request,"pastebin/fetching_content_logged_in.html",{"content_object":content_object ,"var3":url_no,"username":usernam}) 
 
@@ -125,7 +130,7 @@ def user_login(request):
             login(request,user)
             return HttpResponseRedirect(reverse("pastebin:main_loggedin_page",))
         else:
-            return HttpResponse("invalid username and password")
+            return render(request,"pastebin/return_invalid_user.html")
     else :
         return render(request,"pastebin/login.html",{})
 
@@ -137,11 +142,11 @@ def user_logout(request):
 
 def paste_edit(request,pk):
     my_record = paste.objects.get(url=pk)
-    form = input(instance=my_record|safe)
+    form = input(instance=my_record)
     if request.method=="POST":
         form = input(request.POST, instance=my_record)
         form.save()
-        return HttpResponse("edited successfully")
+        return render(request,"pastebin/return_edit.html")
     return render(request,"pastebin/paste_edit.html",{"form":form,"pk":pk})
 
 def paste_edit_logged_in(request,pk):
@@ -150,6 +155,6 @@ def paste_edit_logged_in(request,pk):
     if request.method=="POST":
         form = input_logged_in(request.POST, instance=my_record)
         form.save()
-        return HttpResponse("edited successfully")
+        return render(request,"pastebin/return_edit_log.html")
     return render(request,"pastebin/paste_edit_logged_in.html",{"form":form,"pk":pk}) 
 
