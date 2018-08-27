@@ -1,9 +1,12 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+{% load staticfiles %}
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{% static "/pastebin/prism.css" %}">
+ <script src="{% static "pastebin/prism.js" %}"></script>
 <div class="container">
     <div style="text-align: center">
        <h1 style="margin-top: 4em;"> code you are looking for is here!<h1>
-  <div style="text-align:left ; "><pre>    {{content_object.content|linebreaksbr }} </pre></div>
+  <div style="text-align:left ; "><pre> <code class="language-javascript"> <pre>  {{content_object.content|safe }} </pre></code></pre></div>
 </div><br> <a href="/pastebin/{{var3}}/edit/">edit here</a>
 
 </div>

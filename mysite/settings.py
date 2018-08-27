@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'pastebin.apps.PastebinConfig',
     'widget_tweaks',
     'tinymce',
+    'ckeditor',
 
 
 ]
@@ -125,3 +126,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+CKEDITOR_BASEPATH = "/my_static/ckeditor/ckeditor"
+

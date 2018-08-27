@@ -1,9 +1,13 @@
 {% extends "pastebin/base.html" %}
 {% block main_content %}
-
-            <body>
+{% load staticfiles %}    <body>
 
  <!--navbar-->
+ <link rel="stylesheet" type="text/css" href="{% static "/pastebin/prism.css" %}">
+ <script src="{% static "pastebin/prism.js" %}"></script>
+ {% load static %}
+ <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+ <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
          
  <nav class="navbar navbar-default" >
         <div class="container">
@@ -24,33 +28,85 @@
 </nav>
 
 
+       
+<script>
+    webshim.setOptions('forms-ext', {
+replaceUI: 'auto',
+types: 'date',
+date: {
+    startView: 2,
+    inlinePicker: true,
+    classes: 'hide-inputbtns'
+}
+});
+webshim.setOptions('forms', {
+lazyCustomMessages: true
+});
+//start polyfilling
+webshim.polyfill('forms forms-ext');
+
+//only last example using format display
+$(function () {
+$('.format-date').each(function () {
+    var $display = $('.date-display', this);
+    $(this).on('change', function (e) {
+        //webshim.format will automatically format date to according to webshim.activeLang or the browsers locale
+        var localizedDate = webshim.format.date($.prop(e.target, 'value'));
+        $display.html(localizedDate);
+    });
+});
+});
+</script>
+
+
 
 <div class="container">
 <div class="row">
-  <div class="col-sm-8">
+  <div class="col-sm-8"><br><br><br>
+<div style="background-color: black">
+<span>write your code with us</span>
+</div>
 
-        <pre>
-                <code class="language-markup">
-                    code line text here #include<stdio.h>
-                </code>
-            </pre>
+<pre><code class="language-javascript">
+        var myObject = {
+        property1: "something",
+        property2: 5,
+        property3: true
+        }; 
+        </code></pre>
+
 
             <form class="form-horizontal" action="/pastebin/main_page/" method="POST">
           
                 {% csrf_token %}
        {{ form.non_field_errors }}
+
+
+
+
+
         <div class="container"  style="font-family: cursive">
-            your text:  <pre><code class="language-xxxx">  <br>{{form.content }}</code></pre><br><br>
+            your text:  <pre class="language-javascript"><br>{{form.media}}{{form.content }}</pre><br><br>
            
       
+
+            <div class="form-row">
+                <input type="date" class="hide-replaced" name="date" />
+            </div>
+            <br>
+           
+
+
                 <input class="btn btn-primary" type="submit" value="upload">   
             </form>   
   </div>
-  <code>#includljhe stdio.h</code>
+  <script src="{% static "static/pastebin/prism.js" %}"></script>
+
      <div class="col-sm-4">
      </div>
   </div>
 </div>
+
 
 
 
