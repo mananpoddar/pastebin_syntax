@@ -40,6 +40,35 @@ def main_page(request):
          else:
             print("error")    
     return render(request,"pastebin/paste.html",{"form":form }) 
+@login_required
+def main_loggedin_page(request):
+   form=input_logged_in()
+
+   usernam=request.user.username
+   var=form.save(commit=False)
+   var.owner=usernam
+   mypaste=paste_logged_in.objects.filter(owner=usernam)
+   if request.method=="POST":
+        form=input_logged_in(request.POST)
+        mydate=request.POST.get("date",)
+
+        var=form.save(commit=False)
+        var.expiration_date=mydate
+        year,month,day=map(int,mydate.split("-"))
+        mydate=date(year,month,day)
+        diff=mydate-date.today()
+        var.owner=usernam
+        if diff.days<0:
+            return HttpResponse("invalid date")
+        else:
+         if form.is_valid():
+            latest_model=form.save()
+            var3=latest_model.url
+            return render(request,"pastebin/ss_logged_in.html",{"form":form,"var3":var3,"username":usernam}) 
+              
+   return render(request,"pastebin/paste_loggedin.html",{"form":form,"username":usernam ,"mypaste":mypaste}) 
+
+
 
 def content_fetch(request,url_no):
      content_object=paste.objects.get(pk = url_no)
@@ -99,24 +128,6 @@ def user_login(request):
             return HttpResponse("invalid username and password")
     else :
         return render(request,"pastebin/login.html",{})
-@login_required
-def main_loggedin_page(request):
-   form=input_logged_in()
-
-   usernam=request.user.username
-   var=form.save(commit=False)
-   var.owner=usernam
-   mypaste=paste_logged_in.objects.filter(owner=usernam)
-   if request.method=="POST":
-        form=input_logged_in(request.POST)
-        var=form.save(commit=False)
-        var.owner=usernam
-        if form.is_valid():
-            latest_model=form.save()
-            var3=latest_model.url
-            return render(request,"pastebin/ss_logged_in.html",{"form":form,"var3":var3,"username":usernam}) 
-              
-   return render(request,"pastebin/paste_loggedin.html",{"form":form,"username":usernam ,"mypaste":mypaste}) 
 
 @login_required
 def user_logout(request):
