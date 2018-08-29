@@ -3,7 +3,8 @@ from pastebin import views
 app_name = "pastebin"
 
 urlpatterns = [
-   
+    url(r'^$', views.front_page, name='front_page'),
+
     url(r'^main_page/', views.main_page, name='main_page'),
     url(r'^(?P<url_no>[0-9]+)/$', views.content_fetch, name='content'),
     url(r'^logged_in/(?P<url_no>[0-9]+)/$', views.content_fetch_logged_in, name='content_logged_in'),

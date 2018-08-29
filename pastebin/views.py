@@ -15,6 +15,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
 
+def front_page(request):
+ return render(request,"pastebin/front_page.html") 
 
 
 

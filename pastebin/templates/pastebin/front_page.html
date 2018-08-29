@@ -1,0 +1,151 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+<title>front_page</title>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static "pastebin/mystyle.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "pastebin/content.css" %}">
+<script src="{% static "pastebin/topnav.js" %}"></script>
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Amethysta' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Bitter' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Barlow' rel='stylesheet'>
+
+
+
+        
+        <!-- Styles -->
+
+
+</head>
+
+
+<style>
+
+  .cursive {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Raleway', sans-serif;
+                font-weight: 100;
+                height: 10em;
+                margin: 0;
+                text-align: center;
+                margin-top:2em;
+                font-size:2.5em;
+            }    
+</style>
+<body>
+      <script>
+
+ function callaboutme(){
+                        document.getElementById("demo").innerHTML=" About this project <br><br>"+
+                       " this web application is built on the top of django , it allows you to conveniently share your codes with anyone with just one link !"+
+                          " <div style=text-indent: 1em>It also allows you to manage your share so that you can refer them whenever you need it.I"+
+                          "would really like to know how you feel about the application , to give feedback go to feedback section on the navbar ! </div>"
+                        
+                  }
+                  function callwhywebclub(){
+                  document.getElementById("demo").innerHTML=
+                  "  i want to be the part of web club"+
+                  "because i believe that i can learn a lot from the seniors here"+
+                  "also i think getting into web club after all the efforts i put into this application will give me immense satisfaction and"+
+                  "feeling of pride. so basically this application can be the gateway for me to the club,also some of my personal favourite seniors are in the club "+
+                  ", this provides me an golden oppurtunity to interact with them even more so that's why i have put so much effort into it"+
+                 "iam relatively week in DSA because i learnt web dev in my summer but my willingness to learn will never disappoint you"+
+                 "and i promise if i get into the club i will work so hard that you will get the results from my side for sure ."
+                                           }
+
+
+
+ function callhowitstarted(){
+                        document.getElementById("demo").innerHTML="This is the assignment for the recruitments of web club"+
+                        ". also i always thought that this is basically a application which can really serve a lot of people"+
+                        "what if you want to share a code with your friend to debug , can you think of a platform which is convenient "+
+                        "to you . well if your answer is no you have come to the right place."
+ }
+
+
+
+
+  function callcontact(){
+                          document.getElementById("demo").innerHTML="<ul><li>&#35; 101,Block 3,NITK,  SURATHKAL</li><li>INDIA</li><li>+91&nbsp;9113536695</li><li><a href=mailto:mananpoddarm@gmail.com style=text-decoration:none>&#9993;"+
+                         " mananpoddarm@gmail.com</a></li></ul>"
+                  }
+                     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </script>
+                 
+    
+    
+
+         <div class="cursive">
+              <br><div >Hi there ! Welcome to our first ever sharing platform for codes , happy coding nitkians .</div><br>web club NITK <br><br>
+              <a  href="https://www.facebook.com/web.club.nitk/" class="font"><i  class="fa fa-facebook" style="font-size:25px  ; height: 30px; width: 30px;"></i> </a> 
+  
+  <a href="https://github.com/WebClub-NITK" class="font"><i class="fa fa-github" style="font-size:25px  ; height: 30px; width: 30px;"></i></a>  
+                   
+
+          </div>
+
+          <div class="container" style="text-align: center">    <a href="{% url "pastebin:main_page" %}" class="btn btn-primary">go to application</a></div><br><br><br>
+
+     <nav class="navbar navbar-default" >
+            <div class="container">
+            <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>                        
+                          </button>
+                <a href="#!" onclick="callaboutme()"class="navbar-brand">About application</a>  
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+             <li>  <a href="#!" class="active" onclick="callhowitstarted()">how it started</a>    </li>
+             <li>   <a href="#!" class="dropdown" onclick="callwhywebclub()">why_web_club</a></li>
+             <li>  <a href="#!" onclick="callcontact()">Contact me</a></li>
+             </ul> 
+            </div>
+    </nav>
+            <div class="container">
+              <div class="main_content" style="font-family:Amethysta">
+                 <div   id="demo">
+                    <div  >About this project <br><br>
+                           this web application is built on the top of django , it allows you to conveniently share your codes with anyone with just one link !
+                              <div style="text-indent: 1em">It also allows you to manage your share so that you can refer them whenever you need it.I
+                             would really like to know how you feel about the application , to give feedback go to feedback section on the navbar ! </div>
+                     </div>
+                  </div>
+                </div>
+            </div>
+<br><br>
+</body> 
