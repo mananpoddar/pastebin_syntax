@@ -22,7 +22,7 @@
 
 
 <div class="container">
-<div style="text-align: center">you can edit/update your code here without changing link</div><br>
+<div style="text-align: center ;font-family: amethsya">you can edit/update your code here without changing link</div><br>
 
 <form class="form-horizontal" action="/pastebin/{{pk}}/edit/" method="POST">
             
@@ -30,10 +30,9 @@
        {{ form.non_field_errors }}
         <div class="container" style="font-family: cursive">
           <br>{{form.content|safe }}<br><br>
-          
-      
-                <input class="btn btn-primary" type="submit" value="update">   
+          <div>expiration_date</div>
+{{form.expiration_date}}                <input class="btn btn-primary" type="submit" value="update">   
             </form>   
 </div>
-
+<br>
   {% endblock%}

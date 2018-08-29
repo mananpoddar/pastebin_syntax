@@ -67,10 +67,10 @@
             <form class="form-horizontal" action="/pastebin/main_loggedin_page/" method="POST">
                 {% csrf_token %}
        {{ form.non_field_errors }}
-            your text:<br>{{form.media}}{{form.content }}<br><br>
+          <div style="font-family:Amethysta">  your text:<br>{{form.media}}{{form.content }}<br><br></div>
             <url:>
              <em>&nbsp;</em><br><br>
-      <div class="container">expiration date</div>
+      <div class="container"  style="font-family:Amethysta">expiration date</div><div style="font-size: .5em;font-family:Amethysta">this field is mandatory</div>
 
              <div class="form-row">
                 <input type="date" class="hide-replaced" name="date" />
@@ -81,13 +81,18 @@
                 <input class="btn btn-primary" type="submit" value="Submit it">   
             </form>   
 </div>
-     <div class="col-sm-4"><div class="container-fluid">all the tough task of managing your shared codes is on us !</div>
+     <div class="col-sm-4"><div class="container-fluid" style="font-family:Amethysta">all the tough task of managing your shared codes is on us !</div>
               <br>
+
+              {% if mypaste %}
                     {% for items in mypaste %} 
                    <a href="/pastebin/logged_in/{{items.url}}"> pastebin/logged_in/{{items.url}}</a> <br>
                     
                     {% endfor %}</div>
+</div>{% else %}
+<div>paste history is empty right now ! share your code with us we will take care of your links here
 </div>
+{% endif %}
 
 
 {% endblock %}
