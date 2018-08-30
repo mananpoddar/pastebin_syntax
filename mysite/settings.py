@@ -25,7 +25,7 @@ SECRET_KEY = '2b4#ehe##-g_px(ef4(vd_2&!4js@h*oh1rel9zt23*moan!d('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["mananm.pythonanywhere.com"]
 
 
 # Application definition
@@ -127,4 +127,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 CKEDITOR_BASEPATH = "/my_static/ckeditor/ckeditor"
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 
