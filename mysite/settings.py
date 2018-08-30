@@ -25,7 +25,7 @@ SECRET_KEY = '2b4#ehe##-g_px(ef4(vd_2&!4js@h*oh1rel9zt23*moan!d('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["mananm.pythonanywhere.com"]
+ALLOWED_HOSTS = []
 
 
 # Application definition

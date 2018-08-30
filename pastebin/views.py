@@ -146,19 +146,27 @@ def user_logout(request):
 
 def paste_edit(request,pk):
     my_record = paste.objects.get(url=pk)
-    form = input(instance=my_record)
-    if request.method=="POST":
+    if my_record.editable==False :
+        return render(request,"pastebin/return_edit_excess.html")
+    else:
+     form = input(instance=my_record)
+    
+     if request.method=="POST":
         form = input(request.POST, instance=my_record)
         form.save()
         return render(request,"pastebin/return_edit.html")
-    return render(request,"pastebin/paste_edit.html",{"form":form,"pk":pk})
+     return render(request,"pastebin/paste_edit.html",{"form":form,"pk":pk})
 
 def paste_edit_logged_in(request,pk):
     my_record = paste_logged_in.objects.get(url=pk)
-    form = input_logged_in(instance=my_record)
-    if request.method=="POST":
+    if my_record.editable==False:
+        return render(request,"pastebin/return_edit_excesslog.html")
+    else:
+
+     form = input_logged_in(instance=my_record)
+     if request.method=="POST":
         form = input_logged_in(request.POST, instance=my_record)
         form.save()
         return render(request,"pastebin/return_edit_log.html")
-    return render(request,"pastebin/paste_edit_logged_in.html",{"form":form,"pk":pk}) 
+     return render(request,"pastebin/paste_edit_logged_in.html",{"form":form,"pk":pk}) 
 

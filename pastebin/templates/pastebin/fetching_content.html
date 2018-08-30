@@ -1,3 +1,6 @@
+
+
+
 {% load staticfiles %}
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -6,10 +9,33 @@
 <link rel="stylesheet" type="text/css" href="{% static "/pastebin/prism.css" %}">
  <script src="{% static "pastebin/prism.js" %}"></script>
 <br><br><br><br>
- <div style="margin-left: 45em;">
+
+<nav class="navbar navbar-default" >
+                <div class="container">
+                <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>                        
+                              </button>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                    <li>  <a href="#!" class="active">welcome {{username}}</a>    </li>
+                 <li>  <a href="/pastebin/{{var3}}/edit/">edit here</a></li>
+
+
+                 
+                 </ul> 
+                </div>
+        </nav>
+
+
+ <div style="margin-left: 100em;">
+   
         <i class="fa fa-share-alt" style="font-size:36px"></i>
         </div>
-<div style="margin-left: 45em;">
+<div style="margin-left: 100em;">
 <!-- AddToAny BEGIN -->
 
 <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
@@ -30,8 +56,7 @@
         <a href="{% url "pastebin:main_page" %}" class="btn btn-primary">go to main page</a>
 <br>
        <h1 > code you are looking for is here!<h1>
-  <div style="text-align:left ; "><pre> <code class="language-javascript"> <pre>  {{content_object.content|safe }} </pre></code></pre></div>
-</div><br> <a href="/pastebin/{{var3}}/edit/">edit here</a><br><br><br>
-<div  style="font-size: 3em;">the content will expire in {{days}} days</div>
+  <div style="text-align:left ; "><pre> <code class="language-javascript"> <pre>  {{content_object.content|safe }} </pre></code></pre></div><br>
+<div  style="font-size: 1.5em;">the content will expire in {{days}} day/s</div>
 
 </div>
