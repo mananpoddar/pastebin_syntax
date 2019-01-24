@@ -6,5 +6,11 @@ link to the application -->  http://mananm.pythonanywhere.com<br>
 framework --> django <br>
 tools --> webshim(for popping up of calendar), ckeditor and prism.js( for syntax highlighting ) , add_to_any_begin(api for sharing urls directly.)<br>
 
+## Setting up the project
+
+1. clone the repo
+2. do `pip install django-tinymce`
+3. do `pip install django-ckeditor`
+4. do `pip install django-widget-tweaks`
 
 
